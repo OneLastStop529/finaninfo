@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <th:block th:include="layout ::link"/>
+    <title>News</title>
+</head>
+<body>
+    <nav th:replace="layout :: nav"></nav>
+    <h1 th:text="${news.title}">Oh,My God I Can't believe it</h1>
+    <p th:text="${news.content}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam semper velit id ante cursus pulvinar. Aliquam purus tellus, vulputate semper dolor tempus, tincidunt fringilla metus. Curabitur rutrum ut diam id cursus. Curabitur egestas, est non pharetra vestibulum, nunc arcu tempor tortor, vitae ultricies nunc nisi quis arcu. Pellentesque quis orci ex. Ut pulvinar elit lorem, vel finibus nunc fringilla ut. Cras sagittis, sapien eget tincidunt euismod, nisi tellus lobortis lacus, eget fermentum nibh nunc non justo. Nullam hendrerit nibh nec lectus dignissim euismod. Sed varius lorem sit amet quam placerat tempor. Integer gravida, nibh a sollicitudin interdum, enim leo rhoncus massa, et varius ex libero a diam. Cras ac egestas felis. Nunc vel massa sit amet est suscipit vestibulum egestas efficitur neque. Suspendisse sed tincidunt ligula. Morbi accumsan turpis nisi, sit amet tempor orci fringilla a. Vivamus interdum commodo lacus, ullamcorper auctor urna condimentum id.</p>
+</body>
+    <th:block th:include="layout ::scripts"/>
+</html>

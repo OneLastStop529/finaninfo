@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Login</title>
+    <th:block th:include="layout::link"/>
+
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap-theme.min.css}" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"/>
+</head>
+<body>
+<div class="">
+    <h1>Welcome to the online Financial information platform</h1>
+</div>
+<div class="container">
+<div class="login ">
+    <div class="col-md-4 col-offset-4">
+    <form th:action="@{/login}" th:object="${user}" method="post" >
+
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
+        <div class="row">
+            <div class="col-md-6 col-md-offset-6">
+                Your Userame:   <input  th:field="*{username}" placeholder="username"/>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-md-offset-6">
+                Your password:    <input type="password" th:field="*{password}" placeholder="password"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-6">
+                <button type = "submit">Login</button>
+            </div>
+        </div>
+        <div class="col-md-4 col-md-offset-1">
+            <a href="/signup">Don't have an account yet?Sign up first</a>
+        </div>
+    </form>
+</div>
+</div>
+</div>
+</body>
+<th:block th:include="layout::scripts"/>
+</html>

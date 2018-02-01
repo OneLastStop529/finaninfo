@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Welcome</title>
+
+    <link rel="stylesheet" href="webjars/bootstrap/3.3.7/"/>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script type="text/javascript" th:src="@{/assets/js/raphael.min.js}"></script>
+</head>
+<body>
+
+<nav th:replace="layout :: nav"></nav>
+</body>
+
+<!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+<script src="https://code.jquery.com/jquery.js"></script>
+<!-- 包括所有已编译的插件 -->
+<script th:src="@{webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+
+
+
+<script  type="text/javascript">
+    // Creates canvas 320 × 200 at 10, 50
+    var paper = Raphael(10, 50, 320, 200);
+
+    // Creates circle at x = 50, y = 40, with radius 10
+    var circle = paper.circle(50, 40, 10);
+    // Sets the fill attribute of the circle to red (#f00)
+    circle.attr("fill", "#ff293a");
+
+    // Sets the stroke attribute of the circle to white
+    circle.attr("stroke", "#8eddff");
+</script>
+</html>
