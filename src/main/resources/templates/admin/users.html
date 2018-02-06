@@ -30,6 +30,15 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.min.js"></script>
     <script type="text/javascript" src="http://www.jeasyui.net/Public/js/easyui/jquery.easyui.min.js"></script>
     <script type="text/javascript">
+        $(function(){
+            $('#dg').edatagrid({
+                url: '/admin/users',
+                saveUrl: 'save_user.php',
+                updateUrl: 'update_user.php',
+                destroyUrl: 'destroy_user.php'
+            });
+        });
+
         function editUser(){
             var row = $('#dg').datagrid('getSelected');
             if (row){
@@ -41,24 +50,32 @@
     </script>
 </head>
 
-<!--/*@thymesVar id="user" type="cn.edu.lixin.financialinfomation.user.User"*/-->
+<!--/*@thymesVar id="user" type="com.finaninfo.user.User"*/-->
 <body>
     <h2>User List</h2>
     <div class="demo-info" style="margin-bottom: 10px">
-        <div class="demo-tip icon-tip">&nbsp;</div>
+        <div class="demo-tip icon-tip"></div>
 
     </div>
 
     <table id="dg" title="Users" class="easyui-datagrid" style="width:700px;height:250px"
-           toolbar="#toolbar" pagination="true"
+           toolbar="#toolbar" pagination="true" idField="id"
            rownumbers="true" fitColumns="true" singleSelect="true">
         <thead>
-        <th>ID</th><th>Username</th><th>E-mail</th><th>City</th><th>Phone Number</th>
-        </thead>
-
-        <tr th:each="user : ${users}">
-        <td th:text="${user.getId()}">1</td><td th:text="${user.username}">OneLastStop</td><td th:text="${user.email}">hudashi@123.com</td><td th:text="${user.city}">Shanghai</td><td th:text="${user.phoneNo}">21739814</td>
+        <tr>
+        <th>ID</th><th>Username</th><th>E-mail</th><th>City</th><th>Phone Number</th><th>asdadsah</th>
         </tr>
+        </thead>
+    </table>
+    <table class="datagrid-btable">
+        <tbody>
+        <tr th:each="user : ${users}">
+        <td th:text="${user.getId()}">1</td><td th:text="${user.username}">OneLastStop</td><td th:text="${user.email}">hudashi@123.com</td><td th:text="${user.city}">Shanghai</td>
+        </tr>
+        <tr>
+            <td>1</td><td >OneLastStop</td><td >hudashi@123.com</td><td>Shanghai</td><td>21739814</td>
+        </tr>
+        </tbody>
     </table>
     <div id="toolbar">
         <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()">New User</a>

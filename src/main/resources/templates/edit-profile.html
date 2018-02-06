@@ -1,18 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
-<head xmlns:th="http://www.thymeleaf.org/">
-    <meta charset="UTF-8">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
     <title>Edit Profile</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <link href="webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
     <div class="container-fluid" style="margin-top: 20px">
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
-            <form  >
-                <input />
-            </form>
+            <form th:object="${user}" th:action="@{/#}" method="post">
+                <input type="hidden" th:field="*{id}"/>
+                <div class="panel-group">
+
+                    <!--面板体-->
+                    <div class="panel-primary">
+                        <!--面板标题-->
+                        <div class="panel-heading">
+                            <h1 class="panel-title">Edit user infomation</h1>
+                        </div>
+
+                    <!--面板主体-->
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-4 form-group">
+                                    <label>Username</label>
+                                    <input th:field="*{username}"/>
+                                </div>
+
+                                <div class="col-md-4 form-group">
+                                    <label>Email</label>
+                                    <input th:field="*{email}"/>
+                                </div>
+
+                                <div class="col-md-4 form-group">
+                                    <label>Phone Number</label>
+                                    <input th:field="*{phoneNo}"/>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4 form-group">
+                                    <label>City</label>
+                                    <input th:field="*{city}"/>
+                                </div>
+
+                                <div class="col-md-4 form-group">
+                                    <label>Birthday</label>
+                                    <input type="date" th:field="*{birthday}"/>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        </div>
+
+                        <div class="panel-primary">
+                            <div class="panel-heading">
+                                <h1 class="panel-title">Edit Bio</h1>
+                            </div>
+
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12 form-group">
+                                        <textarea class="form-control" rows="3"  th:field="*{bio}"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    </form>
+                </div>
+
         </div>
     </div>
 </body>

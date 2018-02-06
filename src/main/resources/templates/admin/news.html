@@ -41,7 +41,7 @@
     </script>
 </head>
 
-<!--/*@thymesVar id="user" type="cn.edu.lixin.financialinfomation.user.User"*/-->
+<!--/*@thymesVar id="user" type="com.finaninfo.user.User"*/-->
 <body>
     <h2>User List</h2>
     <div class="demo-info" style="margin-bottom: 10px">
@@ -57,7 +57,7 @@
         </thead>
         <!--/*@thymesVar id="newsSet" type="java.util.List"*/-->
         <tr th:each=" news : ${newsSet}">
-        <!--/*@thymesVar id="news" type="cn.edu.lixin.financialinfomation.model.News"*/-->
+            <!--/*@thymesVar id="news" type="com.finaninfo.model.News"*/-->
         <td th:text="${news.getId()}">1</td><td th:text="${news.title}">OneLastStop</td><td th:text="${news.getContent()}">hudashi@123.com</td><td th:text="${news.getComposeDate()}">Shanghai</td>
         </tr>
     </table>
