@@ -4,6 +4,7 @@ import com.finaninfo.model.Affiche;
 import com.finaninfo.repository.AfficheRepository;
 import com.finaninfo.model.News;
 import com.finaninfo.repository.NewsRepository;
+import com.finaninfo.user.Role;
 import com.finaninfo.user.User;
 import com.finaninfo.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,8 @@ public class DatabaseBootStrap implements ApplicationRunner{
     @Override
     public void run(ApplicationArguments applicationArguments) throws Exception {
 //        Injecting preloaded user data into the database
-        User user1 = new User("onelaststop", "12345ACd", "Hugo Hayes", "ROLE_USER");
-        User user2 = new User("admin", "admin", "Administrator", "ROLE_ADMIN");
+        User user1 = new User("onelaststop", "12345ACd", "Hugo Hayes", Role.ROLE_USER);
+        User user2 = new User("admin", "admin", "Administrator", Role.ROLE_ADMIN);
         List<User> users = Arrays.asList(
                 user1,user2
         );

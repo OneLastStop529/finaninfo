@@ -1,6 +1,7 @@
 package com.finaninfo.contrlloer;
 
 import com.finaninfo.commands.UserCommand;
+import com.finaninfo.user.Role;
 import com.finaninfo.user.User;
 import com.finaninfo.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +41,7 @@ public class UserController {
         user.setUsername(username);
         user.setPassword(BCrypt.hashpw(password,BCrypt.gensalt()));
 
-        user.setRole("ROLE_USER");
+        user.setRole(Role.ROLE_USER);
         userService.saveUser(user);
         return "redirect:/";
     }
@@ -67,5 +68,5 @@ public class UserController {
         return "redirect:/admin/users";
     }
 
-//    TODO:
+
 }

@@ -14,10 +14,19 @@ public class AfficheController {
     @Autowired
     private AfficheService afficheService;
 
+
+
     @RequestMapping("/affiche/{page}")
     public String affichePage(Model model, @PathVariable int page) {
         Pageable pageable = new PageRequest(page-1, 15);
-        model.addAttribute("affiche" ,afficheService.findAfficheByPage(pageable));
-        return "affiche";
+        model.addAttribute("afficheSet" ,afficheService.findAfficheByPage(pageable));
+        return "affiche/index";
+    }
+
+    @RequestMapping("/affiche")
+    public String affichePageNoPaging(Model model) {
+
+        model.addAttribute("afficheSet" ,afficheService.findAllAffiche());
+        return "affiche/index";
     }
 }

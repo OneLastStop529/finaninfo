@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="webjars/bootstrap/3.3.7/"/>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <title>Title</title>
+</head>
+<body>
+    <nav th:replace="layout :: nav"></nav>
+    <ul>
+        <p style="color: #4346d0;" th:each="affiche:${afficheSet}" th:text="${affiche.content}"></p>
+    </ul>
+</body>
+</html>

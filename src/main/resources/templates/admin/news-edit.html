@@ -14,7 +14,26 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
 
-            <form th:object="${news}" th:action="@{/#}" method="post">
+            <div class="panel-primary">
+                <div class="panel-heading">
+                    <h1 class="panel-title">Edit Image</h1>
+                </div>
+
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12 ">
+                            <form action="http:\\localhost" method="post" enctype="multipart/form-data"
+                                  th:action="@{'/admin/news/' + ${newsId} + '/image'}">
+                                <label class="control-label">Select File</label>
+                                <input id="imagefile" name="imagefile" type="file" class="file"/>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <form th:object="${news}" th:action="@{'/admin/news-edit/'+${newsId}}" method="post">
                 <input type="hidden" th:field="*{id}"/>
                 <div class="panel-group">
 
@@ -68,28 +87,11 @@
                         </div>
                     </div>
 
-
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </form>
 
-            <div class="panel-primary">
-                <div class="panel-heading">
-                    <h1 class="panel-title">Edit Image</h1>
-                </div>
 
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-12 ">
-                            <form action="http:\\localhost" method="post" enctype="multipart/form-data"
-                                  th:action="@{'/admin/news/' + ${newsId} + '/image'}">
-                                <label class="control-label">Select File</label>
-                                <input id="imagefile" name="imagefile" type="file" class="file"/>
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 
     </div>

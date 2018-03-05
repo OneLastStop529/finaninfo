@@ -21,6 +21,6 @@ public class Comment extends BaseEntity {
     private int likes;
 
     @ManyToOne
-    private News news;
+    private News affiche;
 
 }

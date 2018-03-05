@@ -37,9 +37,9 @@ public class ImageController {
     @PostMapping("/admin/news/{id}/image")
     public String handleImagePost(@PathVariable String id, @RequestParam("imagefile") MultipartFile file){
 
-        imageService.saveImageFile(Long.valueOf(id), file);
+        imageService.saveNewsImageFile(Long.valueOf(id), file);
 
-        return "redirect:/news-details/" + id  ;
+        return "redirect:/admin/news-edit/" + id  ;
     }
 
     @GetMapping("news-details/{id}/newsimage")

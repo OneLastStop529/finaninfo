@@ -40,4 +40,20 @@ public class NewsServiceImpl implements NewsService {
 
         return newsToNewsCommand.convert(newsRepository.findOne(id));
     }
+
+    @Override
+    public void deleteNews(News news) {
+        newsRepository.delete(news);
+    }
+
+    @Override
+    public NewsCommand saveNewsCommand(NewsCommand command) {
+        News detachedNews = newsCommandToNews.convert(command);
+        News savedNews = newsRepository.save(detachedNews);
+
+        return newsToNewsCommand.convert(savedNews);
+
+    }
+
+
 }

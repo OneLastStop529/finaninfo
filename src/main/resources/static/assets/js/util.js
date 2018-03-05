@@ -1,0 +1,1 @@
+var basepath="http://"+window.location.host;

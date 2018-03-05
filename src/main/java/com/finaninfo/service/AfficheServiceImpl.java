@@ -20,6 +20,11 @@ public class AfficheServiceImpl implements AfficheService{
     }
 
     @Override
+    public Iterable<Affiche> findAllAffiche() {
+        return afficheRepository.findAll();
+    }
+
+    @Override
     public Affiche findOne(Long id) {
         return afficheRepository.findOne(id);
     }

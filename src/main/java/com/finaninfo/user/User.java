@@ -14,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
+import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.GregorianCalendar;
 
@@ -33,7 +34,7 @@ public class User extends BaseEntity implements UserDetails{
     private String fullname;
 
 //    @JsonIgnore
-    private String role;
+    private Role role;
 
     @Column
     @DateTimeFormat
@@ -55,6 +56,28 @@ public class User extends BaseEntity implements UserDetails{
 
     @Lob
     private String bio;
+
+    @Lob
+    private Byte[] profilePic;
+
+    @Column(precision = 10, scale = 5)
+    protected BigDecimal balance;
+
+    public BigDecimal getBalance() {
+        return balance;
+    }
+
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
+    }
+
+    public Byte[] getProfilePic() {
+        return profilePic;
+    }
+
+    public void setProfilePic(Byte[] profilePic) {
+        this.profilePic = profilePic;
+    }
 
     public String getBio() {
         return bio;
@@ -126,7 +149,7 @@ public class User extends BaseEntity implements UserDetails{
         super();
     }
 
-    public User( String username, String password, String fullname, String role) {
+    public User( String username, String password, String fullname, Role role) {
         this();
         this.username = username;
         setPassword(password);
@@ -143,11 +166,11 @@ public class User extends BaseEntity implements UserDetails{
 
 
 
-    public void setRole(String role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 
-    public String getRoles() {
+    public Role getRole() {
         return role;
     }
 

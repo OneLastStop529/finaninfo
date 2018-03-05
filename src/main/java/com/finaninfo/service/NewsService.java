@@ -7,8 +7,14 @@ import org.springframework.data.domain.Pageable;
 
 public interface NewsService {
     Page<News> getNewsByPage(Pageable pageable);
+
     News findNewsById(Long id);
+
     Iterable<News> getAllNews();
 
     NewsCommand findCommandById(Long id);
+
+    void deleteNews(News news);
+
+    NewsCommand saveNewsCommand(NewsCommand command);
 }

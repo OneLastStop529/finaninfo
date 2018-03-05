@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Admin Dashboard</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-responsive.min.css" rel="stylesheet"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/site.css" rel="stylesheet"/>
+</head>
+<body>
+
+<div class="container">
+<div th:fragment="admin-nav" class="col-md-3">
+    <div class="well" style="padding: 8px 0;">
+        <ul class="nav nav-list">
+            <h3>Admin Dashboard</h3>
+            <li class="nav-header">
+                Akira
+            </li>
+            <li class="active">
+                <a href="/admin/users"><i class="icon-white icon-home"></i>Users</a>
+            </li>
+            <li>
+                <a href="/admin/affiche"><i class="icon-folder-open"></i> Affiche</a>
+            </li>
+            <li>
+                <a href="/admin/news"><i class="icon-check"></i> News</a>
+            </li>
+            <li>
+                <a href="/admin/stock"><i class="icon-envelope"></i> Stock</a>
+            </li>
+            <li>
+                <a href="/admin/files"><i class="icon-file"></i> Files</a>
+            </li>
+            <li>
+                <a href="activity.htm"><i class="icon-list-alt"></i> Activity</a>
+            </li>
+            <li class="nav-header">
+                Your Account
+            </li>
+            <li>
+                <a href="profile.htm"><i class="icon-user"></i> Profile</a>
+            </li>
+            <li>
+                <a href="settings.htm"><i class="icon-cog"></i> Settings</a>
+            </li>
+            <li class="divider">
+            </li>
+            <li>
+                <a href="help.htm"><i class="icon-info-sign"></i> Help</a>
+            </li>
+        </ul>
+    </div>
+</div>
+</div>
+</body>
+</html>
