@@ -22,4 +22,5 @@ public class StockVo {
     private String sRoe;
     private String sDividendRate;
     private String sDividendYear;
+    private String sVersion;
 }

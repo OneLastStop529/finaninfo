@@ -3,196 +3,95 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Stock</title>
-    <!-- The jQuery library is a prerequisite for all jqSuite products -->
-    <script type="text/ecmascript" src="http://www.guriddo.net/demo/js/jquery.min.js"></script>
-    <!-- We support more than 40 localizations -->
-    <script type="text/ecmascript" src="http://www.guriddo.net/demo/js/trirand/i18n/grid.locale-en.js"></script>
-    <!-- This is the Javascript file of jqGrid -->
-    <script type="text/ecmascript" src="http://www.guriddo.net/demo/js/trirand/src/jquery.jqGrid.js"></script>
-    <!-- This is the localization file of the grid controlling messages, labels, etc.-->
-    <!-- A link to a jQuery UI ThemeRoller theme, more than 22 built-in and many more custom -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
-    <!-- The link to the CSS that the grid needs -->
-    <link rel="stylesheet" type="text/css" media="screen"
-          href="http://www.guriddo.net/demo/css/trirand/ui.jqgrid-bootstrap.css"/>
-    <script>
-        $.jgrid.defaults.width = 780;
-    </script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet"/>
+    <link href="//cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet"/>
+    <!--<link href="https://cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">-->
+    <link href="//cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.min.css" rel="stylesheet"/>
 
+    <link href="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.css" rel="stylesheet"/>
     <link href="//cdn.bootcss.com/limonte-sweetalert2/6.6.5/sweetalert2.min.css" rel="stylesheet"/>
+    <!--<script src="https://cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>-->
+    <script src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="//cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
+
+    <script src="//cdn.bootcss.com/mouse0270-bootstrap-notify/3.1.7/bootstrap-notify.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min.js"></script>
     <script src="//cdn.bootcss.com/limonte-sweetalert2/6.6.5/sweetalert2.min.js"></script>
 
-    <link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet"/>
-    <script src="https://cdn.bootcss.com/mouse0270-bootstrap-notify/3.1.7/bootstrap-notify.min.js"></script>
-    <script src="/assets/js/util.js"></script>
     <script src="/assets/js/messageBox.js"></script>
-    <style>
+
+   <style>
         div.header
         　　 {
             　　text-align: center;
         }
+
+       .stock-up{
+           color: #21e328;
+       }
+
+       .stock-down{
+           color: #d61316;
+       }
     </style>
 </head>
 <body>
     <nav th:replace="layout :: nav"></nav>
-        <div class="row">
-            <div class ="col-md-12" style="padding-left: 30px">
-                <form class="stock-form">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-addon">$</div>
-                            <input type="text" class="form-control" id="stock" name="stock" placeholder="股票代码"/>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary" id="addBtn"><span class="glyphicon glyphicon-plus"></span>新增</button>
-                    <button class="btn btn-warning" id="updateBtn"><span class="glyphicon glyphicon-remove"></span>更新</button>
-                    <button class="btn btn-danger" id="delBtn"><span class="glyphicon glyphicon-refresh"></span>删除</button>
-                    <button class="btn btn-success" id="hisSlyBtn"><span class="glyphicon glyphicon-usd"></span>历史市盈率</button>
-                    <button class="btn btn-success" id="hisSjlBtn"><span class="glyphicon glyphicon-usd"></span>历史市净率</button>
-                    <button class="btn btn-success" id="hisFhBtn"><span class="glyphicon glyphicon-usd"></span>历史分红</button>
-                </form>
+
+    <div class="col-md-10">
+        <form id="stockForm" class="form-inline">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="股票代码" aria-describedby="basic-addon1" name="stock"
+                       id="stock"/>
             </div>
-        </div>
-    <table id="jqGrid"></table>
-    <table id="table"></table>
-    <div id="jqGridPager"></div>
+            <!--<button class="btn btn-default" type="button" id="queryBtn"><span class="glyphicon glyphicon-search"></span>&nbsp;查询        </button>-->
+            <button class="btn btn-primary" type="button" id="addBtn"><span class="glyphicon glyphicon-plus"></span>&nbsp;添加        </button>
+            <button class="btn btn-warning" type="button" id="updateBtn"><span class="glyphicon glyphicon-refresh"></span>&nbsp;更新    </button>
+            <button class="btn btn-danger" type="button" id="delBtn"><span class="glyphicon glyphicon-remove"></span>&nbsp;删除</button>
+            <button class="btn btn-success" type="button" id="hisSylBtn"><span class="glyphicon glyphicon-usd"></span>&nbsp;历史市盈率</button>
+            <button class="btn btn-success" type="button" id="hisSjlBtn"><span class="glyphicon glyphicon-usd"></span>&nbsp;历史市净率</button>
+            <button class="btn btn-success" type="button" id="hisFhBtn"><span class="glyphicon glyphicon-usd"></span>&nbsp;历史分红</button>
+
+        </form>
+
+    </div>
+<br/>
+            <table id="table" class="table table-hover" data-toggle="table"
+                   data-side-pagination="server" data-pagination="true" data-checkbox-header="true"
+                   data-click-to-select="true" data-sort-stable="true" data-toolbar="#toolbar"
+                   data-pagination-loop="false" data-page-number="1" data-page-list="[10,20]"
+                   data-toolbar-align="right" data-sort-name="true"
+            >
+
+                <thead>
+                <tr>
+                    <th data-field="index" data-checkbox="true"></th>
+                    <th data-field="sCode" data-sortable="true">代码</th>
+                    <th data-field="sStockName" data-sortable="true">名称</th>
+                    <th data-field="sCurrentPrice" data-sortable="true" data-align="right">当前价格</th>
+                    <th data-field="sYesterdayPrice" data-sortable="true" data-align="right">昨收</th>
+                    <th data-field="sRangePrice" data-sortable="true" data-align="right">涨幅</th>
+                    <th data-field="sPeDynamic" data-sortable="true" data-align="right">PE(动态)</th>
+                    <th data-field="sPeStatic" data-sortable="true" data-align="right">PE(静态)</th>
+                    <th data-field="sPb" data-sortable="true" data-align="right">市净率</th>
+                    <th data-field="sTotalValue" data-sortable="true" data-align="right">总市值</th>
+                    <th data-field="sRoe" data-sortable="true" data-align="right">净资产收益率</th>
+                    <th data-field="sDividendRate" data-sortable="true" data-align="right">分红率</th>
+                    <th data-field="sDividendYear" data-sortable="true" data-align="right">分红年份</th>
+                    <th data-field="sIndustry" data-sortable="true">所属行业</th>
+                    <th data-field="sMainBusiness" data-width="500">主营业务</th>
+                    <th data-field="sVersion">s_version</th>
+                </tr>
+                </thead>
+            </table>
+
+
 
 </body>
-<script type="text/javascript">
-    /*<![CDATA[*/
-    $.jgrid.defaults.width = 700;
-    $.jgrid.defaults.responsive = true;
-    $.jgrid.defaults.styleUI = 'Bootstrap';
-    $(document).ready(function (){
-        $("#jqGrid").jqGrid({
-            url: basepath+"/stock/list-jqgrid",
-            width:window.screen.availWidth - 20,
-            multiselect : true,
-            shrinkToFit: false,
-            rownumbers: true,
-            loadtext:"数据加载中",
-            mtype:"GET",
-            styleUI:'Bootstrap',
-            datatype:"json",
-            colNames:['代码','名称','当前价格','昨收','涨幅','PE（动态）','PE（静态）','市净率','总市值','净资产收益率','分红率','分红年份','所属行业','主营业务'],
-            colModel:[
-                {label:'sCode',name:"sCode",width:100,frozen:true},
-                {label:'sStockName',name:"sStockName",width:100,frozen:true},
-                {label:'sCurrentPrice',name:"sCurrentPrice",width:100,frozen:true},
-                {label:'sYesterdayPrice',name:"sYesterdayPrice",width:100,frozen:true},
-                {label:'sRangePrice',name:"sRangePrice",width:100,frozen:true},
-                {label:'sPeDynamic',name:"sPeDynamic",width:100,frozen:true},
-                {label:'sPeStatic',name:"sPeStatic",width:100,frozen:true},
-                {label:'sPb',name:"sPb",width:100,frozen:true},
-                {label:'sTotalValue',name:"sTotalValue",width:100,frozen:true},
-                {label:'sRoe',name:"sRoe",width:100,frozen:true},
-                {label:'sDivdendRate',name:"sDivdendRate",width:100,frozen:true},
-                {label:'sDivdendYear',name:"sDivdendYear",width:100,frozen:true},
-                {label:'sIndustry',name:"sIndustry",width:100,frozen:true},
-                {label:'sBusiness',name:"sBusiness",width:100,frozen:true}
-            ],
-            viewRecords:true,
-            rowList:[10,20,30,60],
-            height:'700',
-            rowNum:30,
-            pager:"#jqGridPager"
-        });
+<script src="assets/js/util.js"></script>
 
-        $('#jqgrid').jqGrid("setFrozenColumns");
-        function addCellAttr(rowId, val, rawObject,cm,rdata){
-            if(parseFloat(rawObject.sRangePrice) < 0) {
-                return "style='color:green'"
-            }else if(parseFloat(rawObject.sRangePrice) > 0) {
-                return "style='color:red'"
-            }
-        }
-    });
+<script src="assets/js/stock.js"></script>
 
-    function reloadStock() {
-        var code = $("#stockcode").val();
-        console.info(code);
-        $("#jqGrid").jqGrid('setGriParam', {
-            datatype: "json",
-            postdata: {'code': code},
-            page: 1
-        }).trigger("reloadGrid");
-    }
-
-    $("#search_btn").click(function(){
-        reloadStock();
-    });
-
-    $("#refresh_data_btn").click(function(){
-        messageBox.showLoading('正在更新财务数据');
-        $.ajax({
-            type:"POST",
-            url:basepath+"stock/refresh",
-        success:function(data){
-                if (data == 'success'){
-                    reloadStock();
-                }else{
-                    messageBox.error('提示',data)
-                }
-                messageBox.closeLoading();
-        },error:function(data){
-                messageBox.error('数据提交错误')
-            }
-
-        });
-    });
-
-    $("#add_btn").click(function(){
-        $ajax({
-            type:"POST",
-            url:basepath+"stock/add" +$("#stockCode").val(),
-            success:function(data){
-                messageBox.closeLoading();
-                if (data == 'success'){
-                    reloadStock();
-                }else{
-                    messageBox.error('数据提交错误')
-                }
-            }
-
-        });
-    });
-
-
-    $("#delete_btn").click(function(){
-        var ids = $("#jqGrid").jqGrid("getGridParam","selarrow");
-        if(ids.length == 0){
-            messageBox.notify();
-            return;
-        }
-
-        var codes = new Array();
-
-        $(ids).each(function (index,id){
-            var row = $("#jqGrid").jqGrid('getRowData',id);
-            codes.push(row.sCode);
-        })
-
-        messageBox.confirm("确定是否删除所选股票",function (result) {
-            $ajax({
-                type:"POST",
-                url:basepath+"stock/delete" +$("#stockCode").val(),
-                data:{codes:codes},
-                success:function(data){
-                    messageBox.closeLoading();
-                    if (data == 'success'){
-                        reloadStock();
-                    }else{
-                        messageBox.error('数据提交错误')
-                    }
-                },
-                error: function (data) {
-                    messageBox.error('提示', '数据提交错误');
-                }
-            });
-        })
-
-    });
-    /*]]>*/
-</script>
 </html>

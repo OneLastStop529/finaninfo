@@ -8,8 +8,10 @@
 </head>
 <body>
     <nav th:replace="layout :: nav"></nav>
-    <ul>
-        <p style="color: #4346d0;" th:each="affiche:${afficheSet}" th:text="${affiche.content}"></p>
+    <ul th:each="affiche:${afficheSet}">
+        <h3 th:text="${affiche.title}"></h3>
+        <p th:text="${affiche.getSimpleUploadDate()}+' by '+${affiche.user.getUsername()}"></p>
+        <p style="color: #4346d0;"  th:text="${affiche.content}"></p>
     </ul>
 </body>
 </html>

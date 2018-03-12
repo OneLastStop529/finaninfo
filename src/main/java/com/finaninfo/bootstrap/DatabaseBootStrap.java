@@ -39,7 +39,14 @@ public class DatabaseBootStrap implements ApplicationRunner{
 //        Injecting preloaded affiche data into the database
 
         List<Affiche> affiches = Arrays.asList(
+          new Affiche("This site sucks","It really sucks, my grandma can make a better web application than this",new GregorianCalendar(),user1),
+          new Affiche("This site sucks","It really sucks, my grandma can make a better web application than this",new GregorianCalendar(),user1),
+          new Affiche("This site sucks","It really sucks, my grandma can make a better web application than this",new GregorianCalendar(),user1),
+          new Affiche("This site sucks","It really sucks, my grandma can make a better web application than this",new GregorianCalendar(),user1),
           new Affiche("This site sucks","It really sucks, my grandma can make a better web application than this",new GregorianCalendar(),user1)
+
+
+
         );
         afficheRepository.save(affiches);
 //        Injecting preloaded affiche data into the database

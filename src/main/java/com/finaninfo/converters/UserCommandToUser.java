@@ -2,7 +2,6 @@ package com.finaninfo.converters;
 
 import com.finaninfo.commands.UserCommand;
 import com.finaninfo.user.User;
-import com.sun.istack.internal.Nullable;
 import lombok.Synchronized;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
@@ -12,7 +11,6 @@ public class UserCommandToUser implements Converter<UserCommand,User> {
 
 
     @Override
-    @Nullable
     @Synchronized
     public User convert(UserCommand userCommand) {
         if(userCommand == null){

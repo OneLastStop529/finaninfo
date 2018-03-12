@@ -1,4 +1,3 @@
-/*<![CDATA[*/
 var current_code = null;
 var rowindex = null;
 $('#table').bootstrapTable({
@@ -173,14 +172,14 @@ $("#updateBtn").click(function () {
 
 
 $("#addBtn").click(function () {
-    //获取表单对象
-    var $bootstrapValidator = $("#stockForm").data('bootstrapValidator');
-    //手动触发验证
-    $bootstrapValidator.validate();
-    // 如果验证未通过,则不继续提交
-    if (!$bootstrapValidator.isValid()) {
-        return;
-    }
+    // //获取表单对象
+    // var $bootstrapValidator = $("#stockForm").data('bootstrapValidator');
+    // //手动触发验证
+    // $bootstrapValidator.validate();
+    // // 如果验证未通过,则不继续提交
+    // if (!$bootstrapValidator.isValid()) {
+    //     return;
+    // }
     messageBox.showLoading('正在加载数据请稍后...');
     $.ajax({
         type: "POST",
@@ -203,17 +202,7 @@ $("#addBtn").click(function () {
     });
 });
 // 提交按钮事件
-$("#queryBtn").click(function () {
-    //获取表单对象
-    var $bootstrapValidator = $("#stockForm").data('bootstrapValidator');
-    //手动触发验证
-    $bootstrapValidator.validate();
-    // 如果验证未通过,则不继续提交
-    if (!$bootstrapValidator.isValid()) {
-        return;
-    }
-    reload();
-});
+
 $("#delBtn").click(function () {
     if (getChk() == "") {
         messageBox.notify("请选择要删除的股票!", "danger");
@@ -314,4 +303,3 @@ window.onload = function () {
     initValidator();
     // window.setInterval("reload()",2000);
 }
-/*]]>*/

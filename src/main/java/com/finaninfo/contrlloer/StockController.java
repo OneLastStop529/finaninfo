@@ -3,14 +3,11 @@ package com.finaninfo.contrlloer;
 
 import com.finaninfo.service.StockService;
 import com.finaninfo.stock.dto.StockDividendRate;
-import com.finaninfo.stock.vo.JqGridVo;
 import com.finaninfo.stock.vo.StockPagingVo;
 import com.finaninfo.stock.vo.StockVo;
 import com.finaninfo.util.StockCrawler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,8 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 
-@RequestMapping("/stock")
 @RestController
+@RequestMapping("/stock")
 public class StockController {
     @Autowired
     private StockService stockService;
@@ -48,22 +45,11 @@ public class StockController {
         return stockPagingVo;
     }
 
-    @RequestMapping("/list-jqgrid")
-    public JqGridVo stockListJqGrid(Integer page, Integer rows, String code, String sidx, String sord){
-        Page<StockVo> p = null;
-        JqGridVo jqGridVo = new JqGridVo();
-        p= stockService.stockList(page,
-                rows,
-                code,
-                sidx,
-                sord
-        );
 
-        jqGridVo.setRows(p.getContent());
-        jqGridVo.setPage(page);
-        jqGridVo.setTotal(p.getTotalPages());
-        jqGridVo.setRecords(p.getTotalElements());
-        return jqGridVo;
+
+    @RequestMapping("/refresh")
+    public void  stockRefresh() throws Exception {
+        stockService.stockRefresh();
     }
 
     @RequestMapping("/del")

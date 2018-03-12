@@ -1,6 +1,7 @@
 package com.finaninfo.contrlloer;
 
 import com.finaninfo.commands.NewsCommand;
+import com.finaninfo.service.AfficheService;
 import com.finaninfo.service.ImageService;
 import com.finaninfo.service.NewsService;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
@@ -25,6 +26,9 @@ public class ImageController {
 
     @Autowired
     private NewsService newsService;
+
+    @Autowired
+    private AfficheService afficheService;
 
 
 

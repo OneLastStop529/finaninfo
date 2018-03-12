@@ -3,7 +3,6 @@ package com.finaninfo.user;
 
 import com.finaninfo.config.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.sun.istack.internal.Nullable;
 import org.hibernate.validator.constraints.Email;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
@@ -38,20 +37,16 @@ public class User extends BaseEntity implements UserDetails{
 
     @Column
     @DateTimeFormat
-    @Nullable
     private GregorianCalendar birthday;
 
     @Column
-    @Nullable
     private Integer phoneNo;
 
     @Column
     @Email
-    @Nullable
     private String email;
 
     @Column
-    @Nullable
     private String city;
 
     @Lob

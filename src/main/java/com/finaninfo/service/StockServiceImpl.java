@@ -34,11 +34,14 @@ public class StockServiceImpl implements StockService{
 
     @Override
     public StockVo getStock(String code){
-        StockEntity stockEntity = stockRepository.findOne(code);
-        StockVo stockVo = new StockVo();
-        BeanUtils.copyProperties(stockEntity,stockVo);
 
-        return stockVo;
+        StockEntity stockEntity = stockRepository.findOne(code);
+        if (stockEntity == null) {
+            StockVo stockVo = new StockVo();
+            BeanUtils.copyProperties(stockEntity,stockVo);
+            return stockVo;
+        }
+        return null;
     }
 
     @Override

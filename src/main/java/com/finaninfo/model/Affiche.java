@@ -8,6 +8,7 @@ import lombok.Setter;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 @Setter
 @Getter
@@ -20,6 +21,8 @@ public class Affiche extends BaseEntity {
     @JoinColumn(name = "user_id")
     private User user;
 
+
+
     public Affiche(String title, String content, GregorianCalendar uploadDate,User user) {
         this();
         this.title = title;
@@ -30,6 +33,12 @@ public class Affiche extends BaseEntity {
 
     public Affiche() {
         super();
+    }
+
+    public String getSimpleUploadDate(){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        String date = simpleDateFormat.format(uploadDate.getTime());
+        return date;
     }
 
 }
